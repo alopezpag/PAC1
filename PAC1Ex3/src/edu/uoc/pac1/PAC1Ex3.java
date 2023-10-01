@@ -17,10 +17,20 @@ public class PAC1Ex3 {
 
     public static double calculateTotalBill(int[][] unitsPerMonth) {
         double totalBill = 0;
+
+        for (int day = 0; day < 7; day++) {
+            int unitatsDia = unitsPerMonth[0][day];
+            double preuUnitatDia = unitRatesPerDay[0][day];  
+            double costTiered = calculateTieredPricing(unitatsDia);
+            double costosAddicionals = calculateAdditionalCharges(unitatsDia);
+            double taxaFixaDia = dailyServiceCharges[day];
+
+            double costDia = (unitatsDia * preuUnitatDia) + costTiered + costosAddicionals + taxaFixaDia;
+            totalBill += costDia;
+        }
+
         return twoDecimals(totalBill);
     }
-
-
 
     public static double calculateDiscount(int daysUnderFiftyUnits, double totalBill) {
         double discount = 0;
