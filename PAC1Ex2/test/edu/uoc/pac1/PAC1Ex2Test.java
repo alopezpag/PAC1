@@ -26,6 +26,24 @@ class PAC1Ex2Test {
     }
 
     @Test
+    void testDivsSum(){
+        assertEquals(1,PAC1Ex2.divsSum(2));
+        assertEquals(1,PAC1Ex2.divsSum(3));
+        assertEquals(3,PAC1Ex2.divsSum(4));
+        assertEquals(6,PAC1Ex2.divsSum(6));
+        assertEquals(8,PAC1Ex2.divsSum(10));
+        assertEquals(1,PAC1Ex2.divsSum(11));
+        assertEquals(16,PAC1Ex2.divsSum(12));
+        assertEquals(1,PAC1Ex2.divsSum(13));
+        assertEquals(10,PAC1Ex2.divsSum(14));
+        assertEquals(9,PAC1Ex2.divsSum(15));
+        assertEquals(49,PAC1Ex2.divsSum(75));
+        assertEquals(-1,PAC1Ex2.divsSum(-13));
+        assertEquals(-1,PAC1Ex2.divsSum(-75));
+        assertEquals(-1,PAC1Ex2.divsSum(0));
+    }
+
+    @Test
     void testPerfectNumbers() {
         assertTrue(PAC1Ex2.isPerfect(6));
         assertTrue(PAC1Ex2.isPerfect(28));

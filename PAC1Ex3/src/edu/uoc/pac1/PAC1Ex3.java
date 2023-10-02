@@ -17,16 +17,21 @@ public class PAC1Ex3 {
 
     public static double calculateTotalBill(int[][] unitsPerMonth) {
         double totalBill = 0;
+        int numWeeks = unitsPerMonth.length;
+        int numDays = (numWeeks > 0) ? unitsPerMonth[0].length : 0;
 
-        for (int day = 0; day < 7; day++) {
-            int unitatsDia = unitsPerMonth[0][day];
-            double preuUnitatDia = unitRatesPerDay[0][day];  
-            double costTiered = calculateTieredPricing(unitatsDia);
-            double costosAddicionals = calculateAdditionalCharges(unitatsDia);
-            double taxaFixaDia = dailyServiceCharges[day];
+        // Iterar a través de cada setmana
+        for (int week = 0; week < numWeeks; week++) {
+            // Iterar a través de cada dia
+            for (int day = 0; day < numDays; day++) {
+                int unitatsDia = unitsPerMonth[week][day];
+                double costTiered = calculateTieredPricing(unitatsDia);
+                double costosAddicionals = calculateAdditionalCharges(unitatsDia);
+                double taxaFixaDia = dailyServiceCharges[day];
 
-            double costDia = (unitatsDia * preuUnitatDia) + costTiered + costosAddicionals + taxaFixaDia;
-            totalBill += costDia;
+                double costDia = (unitatsDia * unitRatesPerDay[week][day]) + costTiered + costosAddicionals + taxaFixaDia;
+                totalBill += costDia;
+            }
         }
 
         return twoDecimals(totalBill);
